@@ -11,7 +11,9 @@ import CoreData
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
-
+    var textField1 = UITextField()
+    let newView = UIView()
+    
     var array : [NSManagedObject] = []
     
     @IBOutlet weak var myTableView: UITableView!
@@ -31,7 +33,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         {
             
         }
-        
+        textField1.text = ""
         //view.backgroundColor = UIColor.red
         view.backgroundColor = UIColor(colorLiteralRed: Float(CGFloat(drand48())), green: Float(CGFloat(drand48())), blue: Float(CGFloat(drand48())), alpha: 1)
     }
@@ -104,8 +106,45 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 print("String")
                 }
     }
-
-    
+    func changeValues(type: String)
+    {
+        if type == "Meat"
+        {
+            
+        }
+        else if type == "Fruit"
+        {
+        
+        }
+        else if type == "Vegetable"
+        {
+        
+        }
+        else if type == "Grains"
+        {
+        
+        }
+    }
+    func addNew()
+    {
+        newView.frame = CGRect(x: 100, y: 100, width: 100, height: 30)
+        let textSize = CGSize(width: 60, height: 10)
+        let textFrame = CGRect(origin: newView.center, size: textSize)
+        textField1 = UITextField(frame: textFrame)
+        let buttonArea = CGRect(x: textField1.center.x, y: textField1.center.y, width: 5, height: 5)
+        let button1 = UIButton(frame: buttonArea)
+        let tapGesture = UITapGestureRecognizer(target: button1, action: Selector("buttonAction"))
+        button1.gestureRecognizers?.append(tapGesture)
+        textField1.placeholder = "New Grocery Item"
+        newView.addSubview(textField1)
+        newView.addSubview(button1)
+    }
+    func buttonAction()
+    {
+        
+        myTableView.reloadData()
+        newView.removeFromSuperview()
+    }
     
 
 }
