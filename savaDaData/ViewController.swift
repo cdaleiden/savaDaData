@@ -25,8 +25,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     {
         super.viewDidLoad()
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Entity")
-            do
-            {
+        do
+        {
                 array = try fetchFunction(fetchRequest as! NSFetchRequest<NSFetchRequestResult>) as! [NSManagedObject]
         }
         catch
@@ -111,22 +111,51 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if type == "Meat"
         {
             let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Meat")
-        
+            do
+            {
+                array = try fetchFunction(fetchRequest as! NSFetchRequest<NSFetchRequestResult>) as! [NSManagedObject]
+            }
+            catch
+            {
+                
+            }
+            
         }
         else if type == "Fruit"
         {
-            
-            
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Meat")
+            do
+            {
+                array = try fetchFunction(fetchRequest as! NSFetchRequest<NSFetchRequestResult>) as! [NSManagedObject]
+            }
+            catch
+            {
+                
+            }
         }
         else if type == "Vegetable"
         {
-            
-            
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Meat")
+            do
+            {
+                array = try fetchFunction(fetchRequest as! NSFetchRequest<NSFetchRequestResult>) as! [NSManagedObject]
+            }
+            catch
+            {
+                
+            }
         }
         else if type == "Grains"
         {
-            
-            
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Meat")
+            do
+            {
+                array = try fetchFunction(fetchRequest as! NSFetchRequest<NSFetchRequestResult>) as! [NSManagedObject]
+            }
+            catch
+            {
+                
+            }
         }
     }
     func addNew()
