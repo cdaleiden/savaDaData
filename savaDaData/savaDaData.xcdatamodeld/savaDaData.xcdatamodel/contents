@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Entity" representedClassName="Entity" syncable="YES" codeGenerationType="class">
+        <attribute name="fruit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="grain" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="meat" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="runningTimes" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vegetables" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Entity" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="Entity" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>

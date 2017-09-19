@@ -101,28 +101,32 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         {
             try manageContext.save()
         }
-               catch
-                {
-                print("String")
-                }
+        catch
+        {
+            print("String")
+        }
     }
     func changeValues(type: String)
     {
         if type == "Meat"
         {
-            
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Meat")
+        
         }
         else if type == "Fruit"
         {
-        
+            
+            
         }
         else if type == "Vegetable"
         {
-        
+            
+            
         }
         else if type == "Grains"
         {
-        
+            
+            
         }
     }
     func addNew()
@@ -133,7 +137,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         textField1 = UITextField(frame: textFrame)
         let buttonArea = CGRect(x: textField1.center.x, y: textField1.center.y, width: 5, height: 5)
         let button1 = UIButton(frame: buttonArea)
-        let tapGesture = UITapGestureRecognizer(target: button1, action: Selector("buttonAction"))
+        let tapGesture = UITapGestureRecognizer(target: button1, action: #selector(ViewController.buttonAction))
         button1.gestureRecognizers?.append(tapGesture)
         textField1.placeholder = "New Grocery Item"
         newView.addSubview(textField1)
@@ -141,11 +145,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     func buttonAction()
     {
-        
+        let text = textField1.text as? Any
+        array.append(NSManagedObject(context: (text as? NSManagedObjectContext)!))
         myTableView.reloadData()
         newView.removeFromSuperview()
     }
-    
-
 }
 
