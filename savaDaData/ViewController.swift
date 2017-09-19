@@ -157,6 +157,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
             }
         }
+        else if type == "All"
+        {
+        
+        }
     }
     func addNew()
     {
@@ -184,6 +188,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     {
         
     }
+    @IBAction func meatButton(_ sender: UIBarButtonItem)
+    {
+        changeValues(type: "Meat")
+    }
+    @IBAction func grainsButton(_ sender: Any)
+    {
+        changeValues(type: "Grain")
+    }
+    @IBAction func allItemsButton(_ sender: Any)
+    {
+        changeValues(type: "All")
+    }
+    @IBAction func fruitButton(_ sender: Any)
+    {
+        changeValues(type: "Fruit")
+    }
+    @IBAction func veggieButton(_ sender: Any)
+    {
+        changeValues(type: "Vegetable")
+    }
+    
     
     
 }

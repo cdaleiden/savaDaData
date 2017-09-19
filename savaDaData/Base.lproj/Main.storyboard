@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -30,7 +31,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O2a-Ni-sLW" id="xD0-zo-jyL">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -44,6 +45,33 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="Uq4-rP-8q0">
+                        <leftBarButtonItems>
+                            <barButtonItem title="Meat" id="j6Q-qQ-kDx">
+                                <connections>
+                                    <action selector="meatButton:" destination="BYZ-38-t0r" id="kCZ-Vw-ts1"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Grains" id="GBN-7b-7Up">
+                                <connections>
+                                    <action selector="grainsButton:" destination="BYZ-38-t0r" id="oNo-eB-rcQ"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="All" id="12a-N4-e97">
+                                <connections>
+                                    <action selector="allItemsButton:" destination="BYZ-38-t0r" id="dRp-gG-or9"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Fruit" id="6rd-i2-V0z">
+                                <connections>
+                                    <action selector="fruitButton:" destination="BYZ-38-t0r" id="k3m-N8-omC"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Veggies" id="EbT-c2-zNY">
+                                <connections>
+                                    <action selector="veggieButton:" destination="BYZ-38-t0r" id="eES-Y9-SD8"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="zXV-zN-xHJ">
                             <color key="tintColor" red="1" green="0.14193818402153358" blue="0.1413164849655173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
