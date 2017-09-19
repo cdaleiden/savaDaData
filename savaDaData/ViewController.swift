@@ -58,7 +58,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     {
         if time == 2.0
         {
-            time - 1.0
+            time -= 1.0
             timer.invalidate()
             view.backgroundColor = UIColor(colorLiteralRed: Float(CGFloat(drand48())), green: Float(CGFloat(drand48())), blue: Float(CGFloat(drand48())), alpha: 1)
             timer = Timer.scheduledTimer(timeInterval: 0.5 , target: self, selector: Selector("timerResult"), userInfo: nil, repeats: true)
