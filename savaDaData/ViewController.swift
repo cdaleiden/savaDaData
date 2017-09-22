@@ -40,6 +40,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         textField1.text = ""
         //view.backgroundColor = UIColor.red
         view.backgroundColor = UIColor(colorLiteralRed: Float(CGFloat(drand48())), green: Float(CGFloat(drand48())), blue: Float(CGFloat(drand48())), alpha: 1)
+        
+        
+        
     }
     func fetchFunction(_ request: NSFetchRequest<NSFetchRequestResult>) throws -> [Any]
     {
@@ -257,7 +260,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     {
         changeValues(type: "Vegetable")
     }
-    
     
     
 }
