@@ -22,8 +22,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var myTableView: UITableView!
     
-    var timer = Timer()
-    var time : Double = 2
+
     
     override func viewDidLoad()
     {
@@ -61,18 +60,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return array2
         
     }
-    func timerResults()
-    {
-        if time == 2.0
-        {
-            time -= 1.0
-            timer.invalidate()
-            view.backgroundColor = UIColor(colorLiteralRed: Float(CGFloat(drand48())), green: Float(CGFloat(drand48())), blue: Float(CGFloat(drand48())), alpha: 1)
-            timer = Timer.scheduledTimer(timeInterval: 0.5 , target: self, selector: Selector("timerResult"), userInfo: nil, repeats: true)
-            
-        }
-        time = 2.0
-    }
+
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -260,6 +248,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     {
         changeValues(type: "Vegetable")
     }
+    
     
     
 }
