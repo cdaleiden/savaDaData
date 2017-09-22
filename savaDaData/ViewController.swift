@@ -14,7 +14,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var textField1 = UITextField()
     let newView = UIView()
     
-    var array : [NSManagedObject] = []
+    var array : [NSManagedObject] = [NSManagedObject(context: ("" as? NSManagedObjectContext)!)]
+    var meat: [String] = []
+    var grain: [String] = []
+    var veggies: [String] = []
+    var fruit: [String] = []
     
     @IBOutlet weak var myTableView: UITableView!
     
@@ -85,7 +89,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
 
-    func save(text: String, runningTimes: Float)
+    func save(text: String, runningTimes: Float, type: String)
     {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
             else
@@ -93,7 +97,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 return
         }
         let manageContext = appDelegate.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "Entity", in: manageContext)!
+        
+        var entity = NSEntityDescription()
+        if type == "Meat"
+        {
+            entity = NSEntityDescription.entity(forEntityName: "meat", in: manageContext)!
+        }
+        else if type == "Grain"
+        {
+            entity = NSEntityDescription.entity(forEntityName: "grain", in: manageContext)!
+        }
+        else if type == "Fruit"
+        {
+            entity = NSEntityDescription.entity(forEntityName: "fruit", in: manageContext)!
+        }
+        else if type == "Vegetable"
+        {
+            entity = NSEntityDescription.entity(forEntityName: "vegetable", in: manageContext)!
+        }
+        else if type == "All"
+        {
+            entity = NSEntityDescription.entity(forEntityName: "all", in: manageContext)!
+        }
         let newObject = NSManagedObject(entity: entity, insertInto: manageContext)
         newObject.setValue(text, forKey: "text")
         newObject.setValue(runningTimes, forKey: "runningTimes")
@@ -159,34 +184,58 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         else if type == "All"
         {
-        
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "All")
+            do
+            {
+                array = try fetchFunction(fetchRequest as! NSFetchRequest<NSFetchRequestResult>) as! [NSManagedObject]
+            }
+            catch
+            {
+                
+            }
         }
     }
     func addNew()
     {
-        newView.frame = CGRect(x: 100, y: 100, width: 100, height: 30)
-        let textSize = CGSize(width: 60, height: 10)
-        let textFrame = CGRect(origin: newView.center, size: textSize)
+        textField1.text = ""
+        newView.frame = CGRect(x: 20, y: 400, width: 500, height: 500)
+        let textSize = CGSize(width: 300, height: 50)
+        let textFrame = CGRect(origin: CGPoint(x: 20, y: 200), size: textSize)
         textField1 = UITextField(frame: textFrame)
-        let buttonArea = CGRect(x: textField1.center.x, y: textField1.center.y, width: 5, height: 5)
+        let buttonArea = CGRect(x: textField1.center.x, y: textField1.center.y, width: 50, height: 50)
         let button1 = UIButton(frame: buttonArea)
-        let tapGesture = UITapGestureRecognizer(target: button1, action: #selector(ViewController.buttonAction))
+        let tapGesture = UITapGestureRecognizer(target: button1, action: #selector(buttonAction))
         button1.gestureRecognizers?.append(tapGesture)
         textField1.placeholder = "New Grocery Item"
+        textField1.backgroundColor = UIColor.gray
+        textField1.textColor = UIColor.black
+        textField1.isUserInteractionEnabled = true
+        textField1.center = newView.center
+        newView.backgroundColor = UIColor.green
+        newView.bringSubview(toFront: textField1)
+        view.addSubview(newView)
         newView.addSubview(textField1)
         newView.addSubview(button1)
     }
     func buttonAction()
     {
-        let text = textField1.text as? Any
+        let text = textField1.text as Any
         array.append(NSManagedObject(context: (text as? NSManagedObjectContext)!))
         myTableView.reloadData()
         newView.removeFromSuperview()
     }
-    
-    @IBAction func addBarButton(_ sender: Any)
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
     {
-        
+        let tableViewAction1 = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Aisle") { (UITableViewRowAction, indexPath1: IndexPath) in
+            self.addNew()
+            self.myTableView.cellForRow(at: indexPath1)?.detailTextLabel?.text = self.textField1.text
+        }
+        return [tableViewAction1]
+    }
+    
+    @IBAction func addBarButton(_ sender: UIBarButtonItem)
+    {
+        addNew()
     }
     @IBAction func meatButton(_ sender: UIBarButtonItem)
     {
